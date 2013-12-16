@@ -168,7 +168,7 @@ void Car::drawBody(DrawingState*)
 
 	polygon(-4, -w,h,0.,   -w,h+m,0., w,h+m,0., w,h,0.);
 	float th[8]={h+m},tl[8]={0.},tmp;
-	polygon(4, -w,th[0],0.,w,th[0],0.,w,th[0]+f*a,f, -w,th[0]+f*a,f);
+	polygon(4, -w,th[0],tl[0],w,th[0],tl[0],w,th[0]+f*a,f, -w,th[0]+f*a,f);
 	th[1]=th[0]+f*a; tl[1]=tl[0]+f;
 	polygon(4, -w,th[1],tl[1],  w,th[1],tl[1],  w,th[1]+lw*s,tl[1]+lw, -w,th[1]+lw*s,tl[1]+lw);
 	th[2]=th[1]+lw*s; tl[2]=tl[1]+lw;
@@ -179,8 +179,14 @@ void Car::drawBody(DrawingState*)
 	polygon(4, -w,th[4],tl[4],  w,th[4],tl[4],  w,th[4]-tmp*bhr,r+f,    -w,th[4]-tmp*bhr,r+f);
 	th[5]=th[4]-bhr*tmp; tl[5]=r+f;
 	polygon(4, -w,th[5],tl[5], w,th[5],tl[5],   w,h,tl[5],               -w,h,tl[5]);
-	polygon(8, -w,h,0., -w,th[0],tl[0], -w,th[1],tl[1], -w,th[2],tl[2], -w,th[3],tl[3], -w,th[4],tl[4], -w,th[5],tl[5], -w,h,r+f);  
-	polygon(-8, w,h,0., w,th[0],tl[0], w,th[1],tl[1], w,th[2],tl[2], w,th[3],tl[3], w,th[4],tl[4], w,th[5],tl[5], w,h,r+f);  
+	polygon(4, -w, h, 0., -w, th[0], tl[0], -w, th[1], tl[1],-w,h,tl[1]);
+	polygon(6, -w, h, tl[1], -w, th[1], tl[1], -w, th[2], tl[2], -w, th[3], tl[3], -w, th[4], tl[4], -w, h, tl[4]);
+	polygon(4, -w,h,tl[4],-w, th[4], tl[4], -w, th[5], tl[5], -w, h, tl[5]);
+	polygon(-4, w, h, 0., w, th[0], tl[0], w, th[1], tl[1], w, h, tl[1]);
+	polygon(-6, w, h, tl[1], w, th[1], tl[1], w, th[2], tl[2], w, th[3], tl[3], w, th[4], tl[4], w, h, tl[4]);
+	polygon(-4, w, h, tl[4], w, th[4], tl[4], w, th[5], tl[5], w, h, tl[5]);
+	//polygon(8, -w,h,0., -w,th[0],tl[0], -w,th[1],tl[1], -w,th[2],tl[2], -w,th[3],tl[3], -w,th[4],tl[4], -w,th[5],tl[5], -w,h,r+f);  
+	//polygon(-8, w,h,0., w,th[0],tl[0], w,th[1],tl[1], w,th[2],tl[2], w,th[3],tl[3], w,th[4],tl[4], w,th[5],tl[5], w,h,r+f);  
 /*
 	polygon(4, -w,h,r+f, -w,h+t,r+f, w,h+t,r+f, w,h,r+f);
 	polygon(-4, w,t+h,0., -w,t+h,0., -w,t+h,f+r, w,t+h,f+r);
