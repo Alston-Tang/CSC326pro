@@ -205,19 +205,19 @@ void Car::drawBody(DrawingState*)
 // simple car: a sport-utility
 SUV::SUV(int c) : Car("SUV",c)
 {
-	 lw = 3;
-	 lm = 5;
-	 lbw = 2;
+	 lw = 4;
+	 lm = 6;
+	 lbw = 3;
 	 lbr = .9f;
-	 bhr = .1f;
-	 w = 3;		// half of width
-	 f = 3;		// length of front part
+	 bhr = .4f;
+	 w = 4;		// half of width
+	 f = 4.5f;		// length of front part
 	 r = 13;		// length of back part
-	 h = 1;		// height of ground
-	 m = 1.5;		// height of motor
-	 t = 4;		// height of back part
+	 h = 1.8f;		// height of ground
+	 m = 2.5f;		// height of motor
+	 t = 5;		// height of back part
 	 s = .8f;		// slope of windshield
-	 a = .1f;		// rake of hood
+	 a = .3f;		// rake of hood
 	 sr = .5f;
 	 br = .5f;
 }
@@ -229,37 +229,37 @@ HatchBack::HatchBack(int c) : Car("HatchBack",c)
 	lm = 5;
 	lbw = 2;
 	lbr = .9f;
-	bhr = .1f;
+	bhr = .3f;
 	w = 3;		// half of width
 	f = 3;		// length of front part
-	r = 13;		// length of back part
-	h = 1;		// height of ground
-	m = 1.5;		// height of motor
+	r = 12;		// length of back part
+	h = 1.3f;		// height of ground
+	m = 2;		// height of motor
 	t = 4;		// height of back part
 	s = .8f;		// slope of windshield
-	a = .1f;		// rake of hood
+	a = .2f;		// rake of hood
 	sr = .5f;
 	br = .5f;
 }
 
-// another set makes a van...
+// another set makes a van... done!!!!!!!!!!!
 Van::Van(int c) : Car("Van",c)
 {
-	lw = 3;
-	lm = 5;
-	lbw = 2;
+	lw = 3.5f;
+	lm = 10;
+	lbw = 1;
 	lbr = .9f;
-	bhr = .1f;
-	w = 3;		// half of width
-	f = 3;		// length of front part
-	r = 13;		// length of back part
-	h = 1;		// height of ground
-	m = 1.5;		// height of motor
-	t = 4;		// height of back part
-	s = .8f;		// slope of windshield
-	a = .1f;		// rake of hood
+	bhr = .9f;
+	w = 5;		// half of width
+	f = 4;		// length of front part
+	r = 16;		// length of back part
+	h = 1.8f;		// height of ground
+	m = 3.5f;		// height of motor
+	t = 6;		// height of back part
+	s = 1.0f;		// slope of windshield
+	a = .4f;		// rake of hood
 	sr = .5f;
-	br = .5f;
+	br = .8f;
 }
 
 
