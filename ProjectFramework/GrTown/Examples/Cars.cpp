@@ -225,31 +225,41 @@ SUV::SUV(int c) : Car("SUV",c)
 // hatchback is just different parameters
 HatchBack::HatchBack(int c) : Car("HatchBack",c)
 {
-	 w = 2.5;		// half of width
-	 f = 2.5;		// length of front part
-	 r = 5;		// length of back part
-	 h = 1;		// height of ground
-	 m = 1.5;		// height of motor
-	 t = 3;		// height of back part
-	 s = .4f;		// slope of windshield
-	 a = .6f;		// rake of hood
-	 sr = 1;
-	 br = 2.5f;
+	lw = 3;
+	lm = 5;
+	lbw = 2;
+	lbr = .9f;
+	bhr = .1f;
+	w = 3;		// half of width
+	f = 3;		// length of front part
+	r = 13;		// length of back part
+	h = 1;		// height of ground
+	m = 1.5;		// height of motor
+	t = 4;		// height of back part
+	s = .8f;		// slope of windshield
+	a = .1f;		// rake of hood
+	sr = .5f;
+	br = .5f;
 }
 
 // another set makes a van...
 Van::Van(int c) : Car("Van",c)
 {
-	 w = 3;		// half of width
-	 f = 2;		// length of front part
-	 r = 8;		// length of back part
-	 h = 1;		// height of ground
-	 m = 2.5;	// height of motor
-	 t = 5;		// height of back part
-	 s = .3f;		// slope of windshield
-	 a = 1.f;		// rake of hood
-	 sr = .5f;
-	 br = .5f;
+	lw = 3;
+	lm = 5;
+	lbw = 2;
+	lbr = .9f;
+	bhr = .1f;
+	w = 3;		// half of width
+	f = 3;		// length of front part
+	r = 13;		// length of back part
+	h = 1;		// height of ground
+	m = 1.5;		// height of motor
+	t = 4;		// height of back part
+	s = .8f;		// slope of windshield
+	a = .1f;		// rake of hood
+	sr = .5f;
+	br = .5f;
 }
 
 

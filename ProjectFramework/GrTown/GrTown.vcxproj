@@ -64,7 +64,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>fltkd.lib;fltkgld.lib;comctl32.lib;wsock32.lib;opengl32.lib;glu32.lib;fltkjpegd.lib;fltkpngd.lib;fltkimagesd.lib;fltkzd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fltkd.lib;fltkgld.lib;comctl32.lib;wsock32.lib;opengl32.lib;glu32.lib;fltkjpegd.lib;fltkpngd.lib;fltkimagesd.lib;fltkzd.lib;glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)GrTown.exe</OutputFile>
       <AdditionalLibraryDirectories>..\WinFltk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp" />
     <ClCompile Include="Examples\Objects.cpp" />
+    <ClCompile Include="Examples\Plane.cpp" />
     <ClCompile Include="Examples\SimpleBehaviors.cpp" />
     <ClCompile Include="Examples\Suburbs.cpp" />
     <ClCompile Include="Roads\Drive.cpp" />

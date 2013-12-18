@@ -167,5 +167,8 @@
     <ClCompile Include="Main.cpp">
       <Filter>Engine Core\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Examples\Plane.cpp">
+      <Filter>Examples Objects and Behaviors\Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

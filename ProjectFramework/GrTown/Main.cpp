@@ -25,6 +25,9 @@
 #include "Roads/Drive.H"
 
 
+#include "Examples/Plane.cpp"
+
+
 // define this to get 2 cars that always turn
 // #define TESTCARS
 
@@ -63,7 +66,15 @@ int main(int /*argc*/, char** /*argv*/)
 
   // cubes are particularly easy since they set their own position
   // we need to raise the cube since we're giving the position of the
-  // center 
+  // center
+
+  //test
+  plane* pl = new plane;
+  add(pl,100,100,100);
+  //test
+
+
+  pl->interesting = true;
   GrObject* cube1 = new ShadedCube(-50,5,-50,10,   .7f, .6f, .3f);
   add(cube1);
   cube1->name = "Cube1";
