@@ -75,8 +75,30 @@ public:
 		polygon(4, -18.5, 0.0, 14.0, -18.5, -0.5, 14.0, -18.5, -0.5, 9.0, -18.5, 0.0, 9.0);
 		polygon(4, -18.5, 0.0, 9.0, -18.5, -0.5, 9.0, -2.5, -0.5, 6.0, -2.5, 0.0, 6.0);
 
-		
-		
+		if (s->timeOfDay<7 || s->timeOfDay>16)
+		{
+			glColor3f(1.0, 0.0, 0.0);
+			polygon(4, 18.6, 0.0, 13.0, 18.6, 0.0, 10.0, 18.6, -0.5, 10.0, 18.6, -0.5, 13.0);
+			polygon(-4, -18.6, 0.0, 13.0, -18.6, 0.0, 10.0, -18.6, -0.5, 10.0, -18.6, -0.5, 13.0);
+			
+			glColor4d(1, 0, 0, .2);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
+			glPushMatrix();
+			glTranslatef(-48.6, -0.25, 11.5);
+			glRotatef(90, 0, 1, 0);
+			gluCylinder(obj, 5, 0, 30, 10, 10);
+			glPopMatrix();
+			glPushMatrix();
+			glTranslatef(48.6, -0.25, 11.5);
+			glRotatef(-90, 0, 1, 0);
+			gluCylinder(obj, 5, 0, 30, 10, 10);
+			glPopMatrix();
+			glFrontFace(GL_CW);
+			glClearColor(1, 1, 1, 1);
+			glDisable(GL_BLEND);
+			glColor3f(1.0, 1.0, 1.0);
+		}
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, -3.0);
 		gluCylinder(obj, 0, 2.5, 3, 10, 10);
