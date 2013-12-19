@@ -68,13 +68,7 @@ int main(int /*argc*/, char** /*argv*/)
   // we need to raise the cube since we're giving the position of the
   // center
 
-  //test
-  plane* pl = new plane(0.0,0.0,0.0,0.0);
-  add(pl,100,100,100);
-  //test
 
-
-  pl->interesting = true;
   GrObject* cube1 = new ShadedCube(-50,5,-50,10,   .7f, .6f, .3f);
   add(cube1);
   cube1->name = "Cube1";
@@ -156,6 +150,12 @@ int main(int /*argc*/, char** /*argv*/)
   new RandomDrive(c2,theRoads[8],.5,0,1);
 
 #endif
+
+//test
+	plane* pl = new plane(0.0,0.0,0.0,0.0);
+	add(pl,100,100,100);
+//test
+
 
 // Airport ======================
   StraightRoad *RunWay;
