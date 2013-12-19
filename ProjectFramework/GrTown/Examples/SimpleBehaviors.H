@@ -44,13 +44,6 @@ public:
 };
 
 ///////////////////////////////////////////////////////////////////////////
-class AirControl :public Behavior{
-public:
-	plane **pl;
-	AirControl(GrObject *owner,plane **pList);
-	
-};
-
 class TakeOff :public Behavior{
 public:
 	TakeOff(GrObject* owner);
@@ -61,6 +54,23 @@ class Land : public Behavior{
 public:
 	Land(GrObject* owner);
 	virtual void simulateUntil(unsigned long);
+};
+
+class Fly :public Behavior{
+public:
+	Fly(GrObject* owner);
+	virtual void simulateUntil(unsigned long);
+};
+class AirControl :public Behavior{
+public:
+	plane **pl;
+	bool air;
+	Land* ld;
+	TakeOff* tk;
+	Fly* fl[10];
+	AirControl(GrObject *owner, plane **pList);
+	virtual void simulateUntil(unsigned long);
+
 };
 
 

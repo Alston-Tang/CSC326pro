@@ -160,15 +160,19 @@ int main(int /*argc*/, char** /*argv*/)
 // Airport ======================
   StraightRoad *RunWay;
   AirportBldg *Airport;
-  plane *pl1;
+  plane *pl1[11];
   Land *test;
   Airport = new AirportBldg();
   RunWay = new StraightRoad(0.0, 0.0, 800.0, 0.0, "RunWay");
-  pl1 = new plane(-90);
+  for (int i = 0; i < 11; i++)
+  {
+	  pl1[i] = new plane(-90);
+	  add(pl1[i]);
+  }
+
   add(Airport, 500.0, 0.0, -200.0, 0.0);
   add(RunWay, 300.0, 0.0, -300.0, 0.0);
-  add(pl1);
-  new TakeOff(pl1);
+  new AirControl(Airport,pl1);
 
 // ==============================
 

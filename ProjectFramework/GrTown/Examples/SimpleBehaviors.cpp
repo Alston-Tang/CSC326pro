@@ -13,6 +13,7 @@
 #include "SimpleBehaviors.H"
 
 #include <math.h>
+#include <stdlib.h>
 
 //////////////////////////////////////////////////////////////////////
 // a trick - since we don't care much about what the rotation is (only
@@ -95,6 +96,7 @@ void TakeOff::simulateUntil(unsigned long t)
 	unsigned long dt = t - lastV;	// how long since last update
 	float secs = ((float)dt) / 1000;	// convert ms to sec
 	lastV = t;
+	if (dt > 1000) return;
 	unsigned long tp = t/1000;
 	plane *p=static_cast<plane*>(owner);
 	if (p->v <= 0.15)
@@ -116,6 +118,7 @@ void Land::simulateUntil(unsigned long t)
 	unsigned long dt = t - lastV;	// how long since last update
 	float secs = ((float)dt) / 1000;	// convert ms to sec
 	lastV = t;
+	if (dt > 1000) return;
 	plane *p = static_cast<plane*>(owner);
 	float tmp = -10 * 2 * pi / 360;
 	if (p->poy <= 6)
@@ -145,10 +148,89 @@ void Land::simulateUntil(unsigned long t)
 	}
 	p->poy += dt*p->v*sin(tmp);
 	p->pox += dt*p->v*cos(tmp);
+	if (p->v == 0) p->over = true;
 }
 
-AirControl::AirControl(GrObject* owner, plane **pList) :Behavior(owner), pl(pList)
+Fly::Fly(GrObject* owner) :Behavior(owner)
 {
+	plane *p;
+	p=static_cast<plane*>(owner);
+	p->dir = rand()%361;
+	p->pox = rand() % 4001 - 2000;
+	p->poz = rand() % 4001 - 2000;
+	p->poy = rand() % 100 + 50;
+	p->v = 0.2;
+	p->fbr = 0;
+	p->over = false;
+	p->lrr = 0;
+}
 
+void Fly::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;	// how long since last update
+	float secs = ((float)dt) / 1000;	// convert ms to sec
+	lastV = t;
+	plane *p = static_cast<plane*>(owner);
+	if (dt > 1000) return;
+	float tmp = p->dir * 2 * pi / 360;
+	p->pox += dt*p->v*-sin(tmp);
+	p->poz += dt*p->v*-cos(tmp);
+}
+
+AirControl::AirControl(GrObject* owner, plane **pList) :Behavior(owner), pl(pList), air(false), ld(NULL), tk(NULL)
+{
+	for (int i = 0; i < 10; i++) fl[i]=NULL;
+}
+
+void AirControl::simulateUntil(unsigned long t)
+{
+	lastV = t;
+	if (tk==NULL && ld==NULL)
+	{
+		if (rand() % 2 == 0)
+		{
+			ld = new Land(pl[0]);
+			pl[0]->over = false;
+		}
+		
+		else
+		{
+			tk = new TakeOff(pl[0]);
+			pl[0]->over = false;
+		}
+	}
+	else if (tk != NULL)
+	{
+		if (pl[0]->over)
+		{
+			delete tk;
+			tk = NULL;
+		}
+	}
+	else if (ld != NULL)
+	{
+		if (pl[0]->over)
+		{
+			delete ld;
+			ld = NULL;
+		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (fl[i] == NULL)
+		{
+			fl[i] = new Fly(pl[i + 1]);
+			pl[i + 1]->over = false;
+		}
+		else
+		{
+			if (pl[i + 1]->over)
+			{
+				delete fl[i];
+				fl[i] = new Fly(pl[i + 1]);
+				pl[i + 1]->over = false;
+			}
+		}
+	}
 }
 
