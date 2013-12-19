@@ -23,23 +23,34 @@ SimpleTree1::SimpleTree1(float h, float r)
 }
 void SimpleTree1::draw(DrawingState*)
 {
+  glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_DECAL);
+
+  fetchTexture("pine.jpg");
+
   // cone for the body
   glFrontFace(GL_CW);
   glColor3f(0.f,.6f,.3f);
   glBegin(GL_TRIANGLE_FAN);
   glNormal3f(0,1,0);
+  glTexCoord2f(0.5f,1);
   glVertex3f(0,height,0);
   glNormal3f(1,0,0);
+  glTexCoord2f(0,0.5f);
   glVertex3f(radius,height/4,0);
   glNormal3f(0,0,1);
+  glTexCoord2f(0.3f,0);
   glVertex3f(0,height/4,radius);
   glNormal3f(-1,0,0);
+  glTexCoord2f(0.7f,0);
   glVertex3f(-radius,height/4,0);
   glNormal3f(0,0,-1);
+  glTexCoord2f(1,0.5f);
   glVertex3f(0,height/4,-radius);
   glNormal3f(1,0,0);
+  glTexCoord3f(1,0,0);
   glVertex3f(radius,height/4,0);
   glEnd();
+  glBindTexture(GL_TEXTURE_2D,0);
   glFrontFace(GL_CCW);
   // stem
   glColor3f(.6f,.5f,.3f);
@@ -60,6 +71,8 @@ void SimpleTree1::draw(DrawingState*)
   glVertex3f(radius/5,0,0);
   glVertex3f(radius/5,height/4,0);
   glEnd();
+  glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
 }
 
 /***********************************************************************/
