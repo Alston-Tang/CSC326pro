@@ -243,6 +243,38 @@ void Church::draw(DrawingState*)
   glPopMatrix();
 }
 
+//***********************************************************************
+AirportBldg::AirportBldg() : GrObject("Airport")
+{
+	color(.8f, .7f, .6f);
+}
+
+void AirportBldg::drawBridge(float x, float y, float l, float h)
+{
+	polygon(4, x, y+h, 50.0, x, y+h, l + 50.0, x, y, l + 50.0, x, y, 50.0);
+	polygon(-4, x+h, y+h, 50.0, x+h, y+h, l + 50.0, x+h, y, l + 50.0, x+h, y, 50.0);
+	polygon(-4, x, y+h, 50.0, x, y+h, l + 50.0, x+h, y+h, l + 50.0, x+h, y+h, 50.0);
+	polygon(4, x, y, 50.0, x, y, l + 50.0, x+h, y, l + 50.0, x+h, y, 50.0);
+	polygon(-4, x, y+h, l + 50.0, x, y, l + 50.0, x+h, y, l + 50.0, x+h, y+h, l + 50.0);
+}
+
+void AirportBldg::draw(DrawingState*)
+{
+	glColor3fv(&color.r);
+	glPushMatrix();
+	glRotatef(180, 0, 1, 0);
+	polygon(4, 0.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 25.0, 0.0);
+	polygon(-4, 0.0, 25.0, 0.0, 0.0, 0.0, 0.0, -50.0, 0.0, 50.0, -50.0, 40.0, 50.0);
+	polygon(4, 100.0, 25.0, 0.0, 100.0, 0.0, 0.0, 150.0, 0.0, 50.0, 150.0, 40.0, 50.0);
+	polygon(4, 150.0, 40.0, 50.0, 150.0, 0.0, 50.0, -50.0, 0.0, 50.0, -50.0, 40.0, 50.0);
+	polygon(4, 0.0, 25.0, 0.0, 100.0, 25.0, 0.0, 150.0, 40.0, 50.0, -50.0, 40.0, 50.0);
+
+	glColor3f(1.0, 1.0, 1.0);
+	drawBridge(100, 10, 20, 6);
+	glPopMatrix();
+}
+
+
 /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 StreetLight::StreetLight(double p) : poleZ(p)
 {

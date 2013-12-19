@@ -69,7 +69,7 @@ int main(int /*argc*/, char** /*argv*/)
   // center
 
   //test
-  plane* pl = new plane;
+  plane* pl = new plane(0.0,0.0,0.0,0.0);
   add(pl,100,100,100);
   //test
 
@@ -157,11 +157,26 @@ int main(int /*argc*/, char** /*argv*/)
 
 #endif
 
+// Airport ======================
+  StraightRoad *RunWay;
+  AirportBldg *Airport;
+  plane *pl1;
+  Land *test;
+  Airport = new AirportBldg();
+  RunWay = new StraightRoad(0.0, 0.0, 800.0, 0.0, "RunWay");
+  pl1 = new plane(-90);
+  add(Airport, 500.0, 0.0, -200.0, 0.0);
+  add(RunWay, 300.0, 0.0, -300.0, 0.0);
+  add(pl1);
+  new TakeOff(pl1);
+
+// ==============================
+
 // ========== TODO1: ===================
 // The following code added a round race track, 
 //  you're required to replace it with an elliptical race track and put two cars running on it.
 
-/*
+
 	// a race track
     Road* t = new RoundRoad(-250,250,100);
 	add(t);
@@ -179,7 +194,7 @@ int main(int /*argc*/, char** /*argv*/)
 	add(h);
 	Drive* d = new SimpleDrive(h,t,0,1);
 	d->speed *= 2;
-*/
+
 
   // *****************************************************************
   // now make a UI

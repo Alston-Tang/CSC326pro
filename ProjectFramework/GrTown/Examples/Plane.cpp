@@ -1,3 +1,6 @@
+#ifndef _plane
+#define _plane
+
 #include "../GrObject.H"
 #include "WinFltk/include/GL/glut.h"
 //#include "../GrTown_PCH.H"
@@ -8,12 +11,23 @@
 class plane :public GrObject
 {
 public:
+	float dir,v,fbr,lrr,pox,poy,poz;
+	plane(float direction, float x, float y, float z) :dir(direction), fbr(0), lrr(0), v(0), pox(x), poy(y), poz(z)
+	{
+	}
+	plane(float direction) :dir(direction),fbr(0), lrr(0), v(0), pox(0), poy(0), poz(0)
+	{
+	};
 	void draw(DrawingState* s)
 	{
 		GLUquadricObj* obj;
 		obj = gluNewQuadric();
 		glPushMatrix();
-
+		glTranslatef(pox, poy, poz);
+		glRotatef(dir, 0, 1, 0);
+		glRotatef(fbr, 1, 0, 0);
+		glRotatef(lrr, 0, 0, 1);
+		
 		gluCylinder(obj, 2.5, 2.5, 25, 10, 10);
 		polygon(-4, 2.5, 0.0, 21.0, 2.5, 0.0, 24.5, 7.5, 0.0, 24.5, 7.5, 0.0, 22.0);
 		polygon(-4, 2.5, 0.0, 24.5, 2.5, -0.5, 24.5, 7.5, -0.5, 24.5, 7.5, 0.0, 24.5);
@@ -60,3 +74,4 @@ public:
 	}
 };
 
+#endif

@@ -62,6 +62,14 @@ public:
   virtual void draw(DrawingState*);
 };
 
+class AirportBldg : public GrObject {
+public:
+	AirportBldg();
+	Color color;
+	virtual void draw(DrawingState*);
+	void drawBridge(float positionX, float positionY, float length, float height);
+};
+
 //**********************************************************************
 // a street light - what is interesting about this is that it draws a
 // transparent cone to fake a spotlight as its drawafter

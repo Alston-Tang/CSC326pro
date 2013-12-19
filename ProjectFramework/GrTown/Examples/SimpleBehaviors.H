@@ -7,6 +7,7 @@
 // simple example behaviors - something to learn from
 
 #include "../Behavior.H"
+#include "../Examples/plane.cpp"
 
 ////////////////////////////////////////////////////////////////////////
 // a simple behavior: spin around the center point
@@ -40,6 +41,26 @@ public:
   TurnAlways(GrObject* owner, float vel = .1);
   float vel;
   virtual void simulateUntil(unsigned long);
+};
+
+///////////////////////////////////////////////////////////////////////////
+class AirControl :public Behavior{
+public:
+	plane **pl;
+	AirControl(GrObject *owner,plane **pList);
+	
+};
+
+class TakeOff :public Behavior{
+public:
+	TakeOff(GrObject* owner);
+	virtual void simulateUntil(unsigned long);
+};
+
+class Land : public Behavior{
+public:
+	Land(GrObject* owner);
+	virtual void simulateUntil(unsigned long);
 };
 
 
