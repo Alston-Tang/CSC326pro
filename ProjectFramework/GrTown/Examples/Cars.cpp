@@ -197,6 +197,35 @@ void Car::drawBody(DrawingState*)
 	//=============================================================
 	// Now the cars are simply boxes with different hights. 
     // TODO2: To make the cars look more realistic and add texutres. 
+	
+	
+	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_DECAL);
+	fetchTexture("windshield.jpg");
+	glBegin(GL_TRIANGLE_STRIP);
+	glTexCoord2f(0,0);
+	glVertex3f(-w, th[1]+0.01, tl[1]-0.01);
+	glTexCoord2f(0,1);
+	glVertex3f(-w, th[2]+0.01, tl[2]-0.01);
+	glTexCoord2f(1,0);
+	glVertex3f(w, th[1]+0.01, tl[1]-0.01);
+	glTexCoord2f(1,1);
+	glVertex3f(w, th[2]+0.01, tl[2]-0.01);
+	glEnd();
+	glColor3f(0.0,0.0,0.0);
+	
+	fetchTexture("backwindshield.jpg");
+	glBegin(GL_TRIANGLE_STRIP);
+	glTexCoord2f(0,0);
+	glVertex3f(w, th[4]+0.01, tl[4]+0.01);
+	glTexCoord2f(0,1);
+	glVertex3f(w, th[3]+0.01, tl[3]+0.01);
+	glTexCoord2f(1,0);
+	glVertex3f(-w, th[4]+0.01, tl[4]+0.01);
+	glTexCoord2f(1,1);
+	glVertex3f(-w, th[3]+0.01, tl[3]+0.01);
+	glEnd();
+	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	
 
 }
 
