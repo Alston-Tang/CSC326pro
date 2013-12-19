@@ -50,7 +50,7 @@ void SimpleTree1::draw(DrawingState*)
   glTexCoord3f(1,0,0);
   glVertex3f(radius,height/4,0);
   glEnd();
-  glBindTexture(GL_TEXTURE_2D,0);
+  
   glFrontFace(GL_CCW);
   // stem
   glColor3f(.6f,.5f,.3f);
