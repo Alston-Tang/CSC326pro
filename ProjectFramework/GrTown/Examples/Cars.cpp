@@ -276,7 +276,7 @@ Van::Van(int c) : Car("Van",c)
 {
 	lw = 3.5f;
 	lm = 10;
-	lbw = 1;
+	lbw = 2.5f;
 	lbr = .9f;
 	bhr = .9f;
 	w = 5;		// half of width

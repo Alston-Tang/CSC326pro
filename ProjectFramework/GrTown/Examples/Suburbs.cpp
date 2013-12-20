@@ -276,15 +276,57 @@ void AirportBldg::draw(DrawingState*)
 	glColor3fv(&color.r);
 	glPushMatrix();
 	glRotatef(180, 0, 1, 0);
+	
+	drawBridge(100, 10, 20, 6);
+
 	polygon(4, 0.0, 25.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 25.0, 0.0);
 	polygon(-4, 0.0, 25.0, 0.0, 0.0, 0.0, 0.0, -50.0, 0.0, 50.0, -50.0, 40.0, 50.0);
 	polygon(4, 100.0, 25.0, 0.0, 100.0, 0.0, 0.0, 150.0, 0.0, 50.0, 150.0, 40.0, 50.0);
 	polygon(4, 150.0, 40.0, 50.0, 150.0, 0.0, 50.0, -50.0, 0.0, 50.0, -50.0, 40.0, 50.0);
 	polygon(4, 0.0, 25.0, 0.0, 100.0, 25.0, 0.0, 150.0, 40.0, 50.0, -50.0, 40.0, 50.0);
+	
+	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_DECAL);
 
+	fetchTexture("arsenal2.jpg");
+	glBegin(GL_QUAD_STRIP);
+	glTexCoord2f(1,0);
+	glVertex3f(-50.04, 0, 50.01);
+	glTexCoord2f(1,1);
+	glVertex3f(-50.04, 40.01, 50.01);
+	glTexCoord2f(0.75,0);
+	glVertex3f(-0.01, -0.01, -0.01);
+	glTexCoord2f(0.75,0.75);
+	glVertex3f(-0.01, 25.01, -0.01);
+	glTexCoord2f(0.25,0);
+	glVertex3f(100.01, -0.01, -0.01);
+	glTexCoord2f(0.25,0.75);
+	glVertex3f(100.01, 25.01, -0.01);
+	glTexCoord2f(0,0);
+	glVertex3f(150.04, -0.01, 50.01);
+	glTexCoord2f(0,1);
+	glVertex3f(150.04, 40.01, 50.01);
+	glEnd();
+	
+	glBegin(GL_QUAD_STRIP);
+	glTexCoord2f(1,1);
+	glVertex3f(-50.04, 40.01, 50.01);
+	glTexCoord2f(0,1);
+	glVertex3f(150.04, 40.01, 50.01);
+	glTexCoord2f(0.75,0.75);
+	glVertex3f(-0.01, 25.01, -0.01);
+	glTexCoord2f(0.25,0.75);
+	glVertex3f(100.01, 25.01, -0.01);
+	glTexCoord2f(0.75,0);
+	glVertex3f(0.01, -0.01, -0.01);
+	glTexCoord2f(0.25,0);
+	glVertex3f(100, -0.01, -0.01);
+	glEnd();
+	
+
+	
 	glColor3f(1.0, 1.0, 1.0);
-	drawBridge(100, 10, 20, 6);
 	glPopMatrix();
+	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }
 
 
