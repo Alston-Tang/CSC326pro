@@ -94,10 +94,9 @@ public:
 			glRotatef(-90, 0, 1, 0);
 			gluCylinder(obj, 5, 0, 30, 10, 10);
 			glPopMatrix();
-			glFrontFace(GL_CW);
 			glClearColor(1, 1, 1, 1);
 			glDisable(GL_BLEND);
-			glColor3f(1.0, 1.0, 1.0);
+			glColor3f(0.9, 0.9, 0.9);
 		}
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, -3.0);

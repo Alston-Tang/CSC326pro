@@ -101,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Examples\Cars.H" />
+    <ClInclude Include="Examples\fireworks.h" />
     <ClInclude Include="Examples\Objects.H" />
     <ClInclude Include="Examples\SimpleBehaviors.H" />
     <ClInclude Include="Examples\Suburbs.H" />
@@ -123,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp" />
+    <ClCompile Include="Examples\fireworks.cpp" />
     <ClCompile Include="Examples\Objects.cpp" />
     <ClCompile Include="Examples\Plane.cpp" />
     <ClCompile Include="Examples\SimpleBehaviors.cpp" />

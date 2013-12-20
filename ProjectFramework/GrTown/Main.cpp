@@ -26,6 +26,7 @@
 
 
 #include "Examples/Plane.cpp"
+#include "Examples/Fireworks.h"
 
 
 // define this to get 2 cars that always turn
@@ -33,6 +34,8 @@
 
 const int numCars = 1;
 const int nGrids = 5;
+
+unsigned int tree;
 
 int main(int /*argc*/, char** /*argv*/)
 { 
@@ -92,6 +95,7 @@ int main(int /*argc*/, char** /*argv*/)
   GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
   cube3->add(cube4);
 
+  ///////////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
@@ -154,6 +158,10 @@ int main(int /*argc*/, char** /*argv*/)
 //test
 	plane* pl = new plane(0.0,0.0,0.0,0.0);
 	add(pl,100,100,100);
+	Fireworks*  fw = new Fireworks();
+	new FireControl(fw);
+	add(fw, 100, 100, 200);
+	
 //test
 
 

@@ -9,6 +9,7 @@
 #include "../MMatrix.H"
 #include "../GrObject.H"
 #include "../Examples/plane.cpp"
+#include "../Examples/fireworks.h"
 
 #include "SimpleBehaviors.H"
 
@@ -234,3 +235,75 @@ void AirControl::simulateUntil(unsigned long t)
 	}
 }
 
+FireControl::FireControl(GrObject *owner):Behavior(owner)
+{
+
+}
+
+void FireControl::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;	// how long since last update
+	float secs = ((float)dt) / 1000;	// convert ms to sec
+	lastV = t;
+	Fireworks *f = static_cast<Fireworks*>(owner);
+	if (dt > 1000) return;
+	printf("%f %f %f %f\n", f->pt[1]->pox, f->pt[1]->poy, f->pt[1]->poz, f->pt[1]->time);
+	if (!f->sta)
+	{
+		f->sta = true;
+		f->pox = rand() % 200;
+		f->poz = rand() % 200;
+		f->poy = 0;
+		f->vx = (float)(rand() % 100) / 10;
+		if (rand() % 2 == 0) f->vx = -f->vx;
+		f->vz = (float)(rand() % 100) / 10;
+		if (rand() % 2 == 0)f->vz = -f->vz;
+		f->vy = (float)(rand() % 50)+50;
+		f->time = rand() % 2000 + 2000;
+	}
+	else if (f->time > 0)
+	{
+		f->vy -= 25*secs;
+		f->pox += f->vx*secs;
+		f->poy += f->vy*secs;
+		f->poz += f->vz*secs;
+		f->time -= dt;
+	}
+	else if (!f->peng)
+	{
+		f->peng = true;
+		for (int i = 0; i < 100; i++)
+		{
+			f->pt[i]->sta = true;
+			f->pt[i]->pox = f->pox;
+			f->pt[i]->poy = f->poy;
+			f->pt[i]->poz = f->poz;
+			f->pt[i]->vx = (float)(rand() % 20)-10;
+			f->pt[i]->vy = (float)(rand() % 20) - 10;
+			f->pt[i]->vz = (float)(rand() % 20) - 10;
+			f->pt[i]->time = rand() % 2000+2000;
+		}
+	}
+	else
+	{
+		bool survive = false;
+		for (int i = 0; i < 100; i++)
+		{
+			if (f->pt[i]->sta)
+			{
+				survive = true;
+				f->pt[i]->vy -= 5*secs;
+				f->pt[i]->pox += f->pt[i]->vx*secs;
+				f->pt[i]->poy += f->pt[i]->vy*secs;
+				f->pt[i]->poz += f->pt[i]->vz*secs;
+				f->pt[i]->time -= dt;
+				if (f->pt[i]->time <= 0) f->pt[i]->sta = false;
+			}
+		}
+		if (!survive)
+		{
+			f->sta = false;
+			f->peng = false;
+		}
+	}
+}

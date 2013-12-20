@@ -73,4 +73,10 @@ public:
 
 };
 
+class FireControl :public Behavior{
+public:
+	FireControl(GrObject* owner);
+	virtual void simulateUntil(unsigned long);
+};
+
 

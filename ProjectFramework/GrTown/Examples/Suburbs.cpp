@@ -14,6 +14,7 @@
 
 #include "Suburbs.H"
 
+extern unsigned int tree;
 /***********************************************************************/
 // a Really simple tree - just a cone with a stem...
 // use normals to make it look rounder...
@@ -25,8 +26,7 @@ void SimpleTree1::draw(DrawingState*)
 {
   glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_DECAL);
 
-  fetchTexture("pine.jpg");
-
+  //fetchTexture("pine.jpg");
   // cone for the body
   glFrontFace(GL_CW);
   glColor3f(0.f,.6f,.3f);
